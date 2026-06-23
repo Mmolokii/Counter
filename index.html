@@ -10,14 +10,26 @@
 
 <body>
   <div class="container">
-    <h1>Counter</h1>
-    <div id="count">0</div>
+    <div class="header">
+      <div class="logo">⌘</div>
+      <h1>Counter</h1>
+    </div>
+
+    <div class="counter-display" id="count" aria-live="polite">0</div>
+
     <div class="controls">
-      <button id="decrement">-</button>
-      <button id="reset">Reset</button>
-      <button id="increment">+</button>
+      <button id="decrement" class="control-btn" aria-label="Decrement">−</button>
+      <button id="reset" class="control-btn reset" aria-label="Reset">Reset</button>
+      <button id="increment" class="control-btn" aria-label="Increment">+</button>
+    </div>
+
+    <div class="footer">
+      <p class="hint">
+        ↑ ↓ to change - <strong>R</strong> to reset
+      </p>
     </div>
   </div>
+
   <script src="script.js"></script>
 </body>
 
