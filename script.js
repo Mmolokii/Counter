@@ -24,4 +24,18 @@ resetBtn.addEventListener('click', () => {
   updateDisplay();
 });
 
+// Keyboard shortcuts
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowUp') {
+    count++;
+    updateDisplay();
+  } else if (e.key === 'ArrowDown') {
+    count--;
+    updateDisplay();
+  } else if (e.key.toLocaleLowerCase() === 'r') {
+    count = 0;
+    updateDisplay();
+  }
+});
+
 updateDisplay();
