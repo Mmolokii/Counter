@@ -36,4 +36,22 @@ const Counter = (function () {
     updateDisplay();
     saveToStorage();
   }
+
+  // Public API
+  return {
+    init(elementId) {
+      countEl = document.getElementById(elementId);
+      loadFromStorage();
+
+      // Attach keyboard listeners once
+      document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowUp') increment();
+        else if (e.key === 'ArrowDown') decrement();
+        else if (e.key.toLowerCase() === 'r') reset();
+      });
+    },
+    increment,
+    decrement,
+    reset,
+  };
 })();
