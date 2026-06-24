@@ -30,7 +30,14 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script type="module">
+    import Counter from './script.js';
+    Counter.init('count');
+
+    document.getElementById('increment').addEventListener('click', () => Counter.increment());
+    document.getElementById('decrement').addEventListener('click', () => Counter.decrement());
+    document.getElementById('reset').addEventListener('click', () => Counter.reset())
+  </script>
 </body>
 
 </html>
