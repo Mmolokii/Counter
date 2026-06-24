@@ -2,7 +2,7 @@
 
 A clean, Raycast-inspired counter with persistence and keyboard shortcuts.
 
-![Counter Screenshot](screenshot.png)
+![Counter Screenshot](./screenshots/screenshot.png)
 
 ## Features
 
