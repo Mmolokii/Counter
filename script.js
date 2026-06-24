@@ -1,60 +1,39 @@
-const countEl = document.getElementById('count');
-const incrementBtn = document.getElementById('increment');
-const decrementBtn = document.getElementById('decrement');
-const resetBtn = document.getElementById('reset');
+// counter.js - Self-contained Counter Module
+const Counter = (function () {
+  let count = 0;
+  let countEl;
 
-let count = 0;
-
-function loadCount() {
-  const saved = localStorage.getItem('counterValue');
-  if (saved !== null) {
-    count = parseInt(saved, 10);
-    updateDisplay();
+  function updateDisplay() {
+    if (countEl) countEl.textContent = count;
   }
-}
 
-function updateDisplay() {
-  countEl.textContent = count;
-}
+  function saveToStorage() {
+    localStorage.setItem('counterValue', count);
+  }
 
-function saveCount() {
-  localStorage.setItem('counterValue', count);
-}
+  function loadFromStorage() {
+    const saved = localStorage.getItem('counterValue');
+    if (saved !== null) {
+      count = parseInt(saved, 10);
+      updateDisplay();
+    }
+  }
 
-incrementBtn.addEventListener('click', () => {
-  count++;
-  updateDisplay();
-  saveCount();
-});
-
-decrementBtn.addEventListener('click', () => {
-  count--;
-  updateDisplay();
-  saveCount();
-});
-
-resetBtn.addEventListener('click', () => {
-  count = 0;
-  updateDisplay();
-  saveCount();
-});
-
-// Keyboard shortcuts
-document.addEventListener('keydown', e => {
-  if (e.key === 'ArrowUp') {
+  function increment() {
     count++;
     updateDisplay();
-    saveCount();
-  } else if (e.key === 'ArrowDown') {
+    saveToStorage();
+  }
+
+  function decrement() {
     count--;
     updateDisplay();
-    saveCount();
-  } else if (e.key.toLocaleLowerCase() === 'r') {
+    saveToStorage();
+  }
+
+  function reset() {
     count = 0;
     updateDisplay();
-    saveCount();
+    saveToStorage();
   }
-});
-
-// Initialise
-loadCount();
+})();
